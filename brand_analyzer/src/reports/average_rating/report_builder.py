@@ -2,7 +2,7 @@ from pathlib import Path
 from collections import defaultdict
 from typing import Any, Generator
 
-from brand_analyzer.core.file_readers import get_file_reader
+from brand_analyzer.core.file_reader import get_file_reader
 from brand_analyzer.core.report_builder import ReportBuilder, report_builder
 from ..constants import ReportBuilderType
 from .structures import AverageData
