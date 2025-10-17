@@ -1,0 +1,6 @@
+class RegistryItemAlreadyExistsError(Exception):
+    ...
+
+
+class RegistryItemNotFoundError(Exception):
+    ...

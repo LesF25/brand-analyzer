@@ -1,6 +1,7 @@
 from typing import Callable, Any
 
 from brand_analyzer.core.registry import get_report_builder_registry
+from brand_analyzer.core.exceptions import RegistryItemNotFoundError
 
 
 class ReportBuilder:
@@ -24,5 +25,10 @@ def report_builder(
 def get_report_builder(report_type: str) -> ReportBuilder:
     registry = get_report_builder_registry()
     report_builder_type = registry.get(report_type)
+
+    if report_builder_type is None:
+        raise RegistryItemNotFoundError(
+            f'The {report_type!r} report does not exist.'
+        )
 
     return report_builder_type()
