@@ -1,6 +1,6 @@
 import pytest
 
-from app.core.registry import (
+from brand_analyzer.core.registry import (
     Registry,
     RegistryItemAlreadyExistsError,
     RegistryItemNotFoundError

@@ -1,6 +1,6 @@
 from typing import Generator, Callable, Any, TypeAlias
 
-from app.core.registry import get_file_reader_registry
+from brand_analyzer.core.registry import get_file_reader_registry
 
 FileReaderType: TypeAlias = type['BaseFileReader']
 

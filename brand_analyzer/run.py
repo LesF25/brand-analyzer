@@ -2,10 +2,10 @@ import argparse
 
 from tabulate import tabulate
 
-from app import src
-from app.core.report_builder import get_report_builder
-from app.core.structures import CommandArguments
-from app.core.utils import resolve_path_type
+from brand_analyzer import src
+from brand_analyzer.core.report_builder import get_report_builder
+from brand_analyzer.core.structures import CommandArguments
+from brand_analyzer.core.utils import resolve_path_type
 
 
 class Application:

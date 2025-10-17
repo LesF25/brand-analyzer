@@ -1,6 +1,6 @@
 from typing import Callable, Any
 
-from app.core.registry import get_report_builder_registry
+from brand_analyzer.core.registry import get_report_builder_registry
 
 
 class ReportBuilder:
