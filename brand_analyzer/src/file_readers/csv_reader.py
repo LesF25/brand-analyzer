@@ -1,7 +1,7 @@
 import csv
 from typing import Any, Generator
 
-from .reader import file_reader, BaseFileReader
+from brand_analyzer.core.file_reader import file_reader, BaseFileReader
 
 
 @file_reader('.csv')

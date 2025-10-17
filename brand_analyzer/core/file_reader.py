@@ -1,6 +1,7 @@
 from typing import Generator, Callable, Any, TypeAlias
 
 from brand_analyzer.core.registry import get_file_reader_registry
+from brand_analyzer.core.exceptions import RegistryItemNotFoundError
 
 FileReaderType: TypeAlias = type['BaseFileReader']
 
@@ -29,5 +30,10 @@ def file_reader(
 def get_file_reader(extension: str) -> BaseFileReader:
     registry = get_file_reader_registry()
     file_reader_type = registry.get(extension)
+
+    if file_reader_type is None:
+        raise RegistryItemNotFoundError(
+            f'The file with the {extension!r} extension cannot be processed.'
+        )
 
     return file_reader_type()

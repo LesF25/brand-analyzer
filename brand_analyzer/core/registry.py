@@ -1,12 +1,6 @@
-from typing import Any, Hashable
+from typing import Any, Hashable, Optional
 
-
-class RegistryItemAlreadyExistsError(Exception):
-    ...
-
-
-class RegistryItemNotFoundError(Exception):
-    ...
+from .exceptions import RegistryItemAlreadyExistsError
 
 
 class Registry:
@@ -29,16 +23,8 @@ class Registry:
 
         self._registry[key] = value
 
-    def get(
-        self,
-        key: Hashable,
-    ) -> Any:
-        if key not in self._registry:
-            raise RegistryItemNotFoundError(
-                f"Item with {key=!r} doesn't exists!"
-            )
-
-        return self._registry[key]
+    def get(self, key: Hashable) -> Optional[Any]:
+        return self._registry.get(key)
 
     def __contains__(self, key: Hashable) -> bool:
         return key in self._registry
