@@ -5,7 +5,7 @@ from tabulate import tabulate
 from brand_analyzer import src
 from brand_analyzer.core.report_builder import get_report_builder
 from brand_analyzer.core.structures import CommandArguments
-from brand_analyzer.core.utils import resolve_path_type
+from brand_analyzer.core.utils import resolve_path_type, handle_error
 
 
 class Application:
@@ -16,24 +16,15 @@ class Application:
         self._register_command()
 
     @classmethod
+    @handle_error
     def run(cls) -> None:
         instance = cls()
         args = CommandArguments(**instance.parse_args().__dict__)
 
         report_builder = get_report_builder(args.report)
 
-        try:
-            data = report_builder.report(args.files)
-        except FileNotFoundError as error:
-            print(
-                f'File not found. Please check the file name and its location: '
-                f'{error.filename or 'Unknown file'}.'
-            )
-
-            return
-
         table = tabulate(
-            data,
+            report_builder.report(args.files),
             headers='keys',
             numalign='right',
             floatfmt='.2f',
