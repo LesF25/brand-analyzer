@@ -1,6 +1,10 @@
 import pytest
 
-from app.core import Registry, RegistryItemAlreadyExistsError, RegistryItemNotFoundError
+from app.core.registry import (
+    Registry,
+    RegistryItemAlreadyExistsError,
+    RegistryItemNotFoundError
+)
 
 
 @pytest.fixture
