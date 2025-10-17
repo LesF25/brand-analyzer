@@ -1,0 +1,1 @@
+from .reports.average_rating import AverageRatingReportBuilder
