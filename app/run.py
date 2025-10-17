@@ -2,6 +2,7 @@ import argparse
 
 from tabulate import tabulate
 
+from app import src
 from app.core.report_builder import get_report_builder
 from app.core.structures import CommandArguments
 from app.core.utils import resolve_path_type
