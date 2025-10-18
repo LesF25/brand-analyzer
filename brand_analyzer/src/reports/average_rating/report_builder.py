@@ -27,7 +27,11 @@ class AverageRatingReportBuilder(ReportBuilder):
             for brand, average_data in result.items()
         ]
 
-        return data
+        return sorted(
+            data,
+            key=lambda row: row['rating'],
+            reverse=True,
+        )
 
     def _get_rows(self, file_name: str) -> Generator[dict[str, Any], None, None]:
         reader = get_file_reader(
